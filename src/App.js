@@ -2,6 +2,8 @@ import "./App.css";
 import CounterContainer from "./components/Counter/CounterContainer";
 
 import ItemList from "./components/ItemList/ItemList";
+import Login from "./components/Login/Login";
+import MaterialGrid from "./components/MaterialGrid/MaterialGrid";
 import { Navbar } from "./components/Navbar/Navbar";
 
 function App() {
@@ -11,9 +13,9 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar color="red" />
-      <ItemList saludo={saludo} edad={edad} />
-      <CounterContainer />
+      {/* <MaterialGrid /> */}
+      {/* <Login /> */}
+      <Navbar />
     </div>
   );
 }
