@@ -1,15 +1,12 @@
 
-const ItemList = ( {saludo, edad} ) => {
 
-  // let { edad, saludo } = props
-
+const ItemList = ( {saludo} ) => {
+  console.log("se actualiza el hijo")
   return (
     <div>
-      <h1>ItemList</h1>
-      <h2>{saludo}</h2>
-      <h2>{edad}</h2>
+        <h2>{saludo}</h2>
     </div>
-  );
-};
+  )
+}
 
-export default ItemList;
+export default ItemList
