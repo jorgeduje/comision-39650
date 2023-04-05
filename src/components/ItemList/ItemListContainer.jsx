@@ -1,32 +1,28 @@
-import { Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
+import { products } from "../../productsMock";
 
-const ItemListContainer = ({ saludo }) => {
-  const [contador, setContador] = useState(0);
-  // let { edad, saludo } = props
+const ItemListContainer = () => {
 
-  // NO SE USA ---> se ejecuta siempre 
-  // useEffect( ()=>{
-  //   console.log("hize la peticion al BACK")
-  // })
+  const [ items , setItems ] = useState([])
 
-  // ---> se ejecuta unicamente en el montaje del componente
-  // useEffect(() => {
-  //   console.log("hize la peticion al BACK");
-  // }, []);
+  useEffect( ()=>{
 
-  useEffect(() => {
-    console.log("hize la peticion al BACK");
-  }, [saludo]); // ---> array de dependencias
-
-  console.log("me ejecute primero")
+    const tarea = new Promise((resolve, reject) => {
+      // reject("se rechazo");
+      resolve(products);
+    });
   
+    tarea
+      .then((res) => setItems(res))
+      .catch((error) => console.log(error));
+      
+  },[])
+
+
   return (
     <div>
-      <ItemList saludo={saludo} />
-      <Typography>{contador}</Typography>
-      <button onClick={() => setContador(contador + 1)}>Sumar</button>
+      <ItemList items={items} />
     </div>
   );
 };
