@@ -1,4 +1,6 @@
 import "./App.css";
+import FetchingData from "./components/FetchingData/FetchingData";
+import { ItemDetailContainer } from "./components/ItemDetail/ItemDetailContainer";
 import ItemListContainer from "./components/ItemList/ItemListContainer";
 
 
@@ -11,7 +13,8 @@ function App() {
     <div className="App">
       <Navbar />
       <ItemListContainer />
-     
+      <ItemDetailContainer />
+     {/* <FetchingData /> */}
     </div>
   );
 }
