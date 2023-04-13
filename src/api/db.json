@@ -1,0 +1,40 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Nike 360",
+      "price": 15000,
+      "stock": 2,
+      "description": "Estas son las mejores zapatillas",
+      "category": "deportivas",
+      "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669326932/free-metcon-4-zapatillas-de-entrenamiento-TQMCZg_fvia3m.png"
+    },
+    {
+      "id": 2,
+      "title": "wilson advance",
+      "price": 300,
+      "stock": 5,
+      "description": "me modifique",
+      "category": "deportivas",
+      "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430010/foc364fsakkzmausrovn.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Jaguar",
+      "price": 17800,
+      "stock": 5,
+      "description": "Zapatillas de ultima generacion para el deporte",
+      "category": "urbanas",
+      "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430220/rtokwmt3j03bblbfhwhb.jpg"
+    },
+    {
+      "title": "Nuevo producto",
+      "price": 111,
+      "stock": 21,
+      "description": "este es un nuevo producto",
+      "category": "deportivas",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTurWuqw5p1224dZ7Fyo83mEdLGwjn_MEbPMQ&usqp=CAU",
+      "id": 5
+    }
+  ]
+}

@@ -1,28 +1,58 @@
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
-import { products } from "../../productsMock";
+
+import axios from "axios";
+import { Button } from "@mui/material";
 
 const ItemListContainer = () => {
+  const [items, setItems] = useState([]);
+  const [isChanged, setIsChanged] = useState(false);
 
-  const [ items , setItems ] = useState([])
+  useEffect(() => {
+    setIsChanged(false);
+    let data = axios.get("http://localhost:5000/products");
+    data.then((res) => setItems(res.data));
+  }, [isChanged]);
 
-  useEffect( ()=>{
+  const deleteProduct = (id) => {
+    axios.delete(`http://localhost:5000/products/${id}`);
+    setIsChanged(true);
+  };
 
-    const tarea = new Promise((resolve, reject) => {
-      // reject("se rechazo");
-      resolve(products);
-    });
-  
-    tarea
-      .then((res) => setItems(res))
-      .catch((error) => console.log(error));
-      
-  },[])
+  const updateProduct = (id, data) => {
+    axios.patch(`http://localhost:5000/products/${id}`, data);
+    setIsChanged(true);
+  };
 
+  const createProduct = (data) => {
+    axios.post("http://localhost:5000/products", data);
+    setIsChanged(true);
+  };
 
   return (
     <div>
-      <ItemList items={items} />
+      <ItemList
+        items={items}
+        deleteProduct={deleteProduct}
+        updateProduct={updateProduct}
+      />
+
+      <Button
+        variant="contained"
+        size="small"
+        onClick={() =>
+          createProduct({
+            title: "Nuevo producto",
+            price: 111,
+            stock: 21,
+            description: "este es un nuevo producto",
+            category: "deportivas",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTurWuqw5p1224dZ7Fyo83mEdLGwjn_MEbPMQ&usqp=CAU",
+          })
+        }
+      >
+        Crear producto
+      </Button>
     </div>
   );
 };

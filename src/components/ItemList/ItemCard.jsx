@@ -9,7 +9,10 @@ import {
   Typography,
 } from "@mui/material";
 
-const ItemCard = ( { item } ) => {
+const ItemCard = ({ item, deleteProduct, updateProduct }) => {
+
+  let rolUsuario = "vendedor"
+
   return (
     <Card sx={{ width: 345, height: 350 }}>
       <CardMedia sx={{ height: 140 }} image={item.img} title="green iguana" />
@@ -28,6 +31,26 @@ const ItemCard = ( { item } ) => {
         <Button variant="contained" size="small">
           Ver detalle
         </Button>
+        {
+          rolUsuario === "vendedor" && <Button
+          variant="contained"
+          size="small"
+          onClick={() =>
+            updateProduct(item.id, { description: "me modifique", price: 300 })
+          }
+        >
+          Editar
+        </Button>
+        }
+       {
+         rolUsuario === "vendedor" &&  <Button
+         variant="contained"
+         size="small"
+         onClick={() => deleteProduct(item.id)}
+       >
+         Borrar
+       </Button>
+       }
       </CardActions>
     </Card>
   );
