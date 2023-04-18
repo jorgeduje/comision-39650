@@ -9,9 +9,7 @@ export const ItemDetailContainer = () => {
 
   useEffect(() => {
     let encontrado = products.find((prod) => prod.id === id);
-    setTimeout(() => {
       setProduct(encontrado);
-    }, 2000);
   }, [id]);
 
   return (
