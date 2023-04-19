@@ -9,7 +9,9 @@ import {
   Typography,
 } from "@mui/material";
 
-const ItemCard = ( { item } ) => {
+import { Link } from "react-router-dom";
+
+const ItemCard = ({ item }) => {
   return (
     <Card sx={{ width: 345, height: 350 }}>
       <CardMedia sx={{ height: 140 }} image={item.img} title="green iguana" />
@@ -25,9 +27,11 @@ const ItemCard = ( { item } ) => {
         </Typography>
       </CardContent>
       <CardActions style={{ height: 100 }}>
-        <Button variant="contained" size="small">
-          Ver detalle
-        </Button>
+        <Link to={`/itemDetail/${item.id}`}>
+          <Button variant="contained" size="small">
+            Ver detalle
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );

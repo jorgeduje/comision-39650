@@ -1,8 +1,15 @@
+.containerNavbar {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  background-color: steelblue;
+}
 
-.containerNavbar{
-    width: 100%;
-    height: 10vh;
-    display: flex;
-    justify-content: space-between;
-    background-color: steelblue;
+.active {
+  color: red;
+}
+
+.noActive {
+  color: yellow;
 }
