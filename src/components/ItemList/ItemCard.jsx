@@ -27,7 +27,7 @@ const ItemCard = ({ item }) => {
         </Typography>
       </CardContent>
       <CardActions style={{ height: 100 }}>
-        <Link to="/itemDetail">
+        <Link to={`/itemDetail/${item.id}`}>
           <Button variant="contained" size="small">
             Ver detalle
           </Button>
