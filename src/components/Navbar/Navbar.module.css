@@ -4,12 +4,28 @@
   display: flex;
   justify-content: space-between;
   background-color: steelblue;
+  align-items: center;
+  padding: 10px;
 }
 
-.active {
-  color: red;
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
 }
 
-.noActive {
-  color: yellow;
+.categories{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+}
+.categories a {
+  background-color: beige;
+  padding: 10px 20px;
+  color: #7F669D;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
 }

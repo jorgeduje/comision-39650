@@ -5,7 +5,7 @@ export const products = [
         title: "Nike 360",
         price: 15000,
         stock: 2,
-        description: "Estas son las mejores zapatillas",
+        description: "Estas son las mejores zapatillas del mercado",
         category: "deportivas",
         img: "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669326932/free-metcon-4-zapatillas-de-entrenamiento-TQMCZg_fvia3m.png"
     },
