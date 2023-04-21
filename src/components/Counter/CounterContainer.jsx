@@ -1,11 +1,13 @@
 import { useState } from "react";
 import CounterPresentation from "./CounterPresentation";
 
-const CounterContainer = () => {
+const CounterContainer = ({ stock, onAdd }) => {
   const [counter, setCounter] = useState(0);
 
+  
+
   const sumar = () => {
-    setCounter(counter + 1);
+    counter < stock ? setCounter(counter + 1): alert("maximo");
   };
 
   const restar = () => {
@@ -14,7 +16,7 @@ const CounterContainer = () => {
 
   return (
     <div>
-      <CounterPresentation counter={counter} sumar={sumar} restar={restar} />
+      <CounterPresentation counter={counter} sumar={sumar} restar={restar} onAdd={onAdd} />
     </div>
   );
 };

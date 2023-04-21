@@ -13,7 +13,7 @@ export const products = [
         id: 2,
         title: "wilson advance",
         price: 14500,
-        stock: 5,
+        stock: 15,
         description: "Ultra livianas y cuentan con camara de aire",
         category: "deportivas",
         img: "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430010/foc364fsakkzmausrovn.jpg"
@@ -22,7 +22,7 @@ export const products = [
         id: 3,
         title: "Puma",
         price: 19000,
-        stock: 5,
+        stock: 3,
         description: "Las clasicas zapatillas que van para cualquier momento del dia",
         category: "urbanas",
         img: "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430165/images_lujpmr.jpg"
