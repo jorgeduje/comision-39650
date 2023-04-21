@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { ItemDetail } from "./ItemDetail";
 import { products } from "../../productsMock";
@@ -14,9 +15,18 @@ export const ItemDetailContainer = () => {
       setProduct(encontrado);
   }, [id]);
 
+  const onAdd = (cantidad)=>{
+    let data = {
+      ...product,
+      quantity: cantidad
+    }
+    console.log(data)
+    // console.log(`se agregaron al carrito ${cantidad} unidad/es del producto ${product.title}`)
+  }
+
   return (
     <div>
-      <ItemDetail product={product} />
+      <ItemDetail product={product} onAdd={onAdd} />
     </div>
   );
 };

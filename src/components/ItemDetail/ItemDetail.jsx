@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./ItemDetail.module.css";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-export const ItemDetail = ({ product }) => {
+import CounterContainer from "../Counter/CounterContainer";
+export const ItemDetail = ({ product, onAdd }) => {
   return (
     <div>
       <div className={styles.containerItemDetail}>
@@ -22,6 +23,9 @@ export const ItemDetail = ({ product }) => {
             <span style={{ fontSize: "23px" }}>Precio:</span> ${product.price}.-
           </h2>
         </div>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <CounterContainer stock={product.stock} onAdd={onAdd} />
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Link to="/">
