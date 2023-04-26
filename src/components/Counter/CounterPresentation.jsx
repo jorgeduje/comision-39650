@@ -10,7 +10,7 @@ const CounterPresentation = ({ sumar, restar, counter, onAdd }) => {
       <Button variant="contained" onClick={restar}>
         Restar
       </Button>
-      <Button onClick={() => onAdd(counter)}>Agregar al carrito</Button>
+      <Button variant="contained" onClick={() => onAdd(counter)}>Agregar al carrito</Button>
     </div>
   );
 };
