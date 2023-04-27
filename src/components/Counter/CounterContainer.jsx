@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CounterPresentation from "./CounterPresentation";
 
-const CounterContainer = ({ stock, onAdd }) => {
-  const [counter, setCounter] = useState(0);
+const CounterContainer = ({ stock, onAdd, initial=1 }) => {
 
+  const [counter, setCounter] = useState(initial);
+
+
+  useEffect(()=>{
+    setCounter(initial)
+  }, [initial])
   
 
   const sumar = () => {
@@ -11,7 +16,9 @@ const CounterContainer = ({ stock, onAdd }) => {
   };
 
   const restar = () => {
-    setCounter(counter - 1);
+    if(counter > 1){
+      setCounter(counter - 1);
+    }
   };
 
   return (
