@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
-import { products } from "../../productsMock";
 
 import { useParams } from "react-router-dom";
 import { PropagateLoader } from "react-spinners";
+import {db} from "../../firebaseConfig"
+
+import { getDocs, collection, query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -11,33 +13,35 @@ const ItemListContainer = () => {
   const { categoryName } = useParams();
 
   useEffect(() => {
-    const productsFiltered = products.filter(
-      (prod) => prod.category === categoryName
-    );
 
-    const tarea = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(categoryName ? productsFiltered : products);
-      }, 1000);
-    });
+    let consulta; 
+    const itemCollection = collection(db, "products")
 
-    tarea.then((res) => setItems(res)).catch((error) => console.log(error));
+    if(categoryName){
+      const itemsCollectionFiltered = query( itemCollection, where("category", "==", categoryName ))
+      consulta = itemsCollectionFiltered
+    }else{
+      consulta = itemCollection
+    }
+
+    getDocs(consulta)
+      .then((res) => {
+        const products = res.docs.map( product => {
+          // console.log(product.data(), product.id)
+          return {
+            ...product.data(),
+            id: product.id
+          }
+        })
+
+        setItems(products)
+      })
+      .catch((err) => console.log(err));
+
   }, [categoryName]);
-
-  // if( items.length === 0 ){
-  //   return <div style={{display: "flex", justifyContent: "center"}}>
-  //     <PropagateLoader color="red" size={40}/>
-  //   </div>
-  // }
 
   return (
     <div>
-      {/* {items.length === 0 && (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <PropagateLoader color="red" size={40} />
-        </div>
-      )  } */}
-
       {items.length === 0 ? (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <PropagateLoader color="red" size={40} />
@@ -46,7 +50,7 @@ const ItemListContainer = () => {
         <ItemList items={items} />
       )}
 
-      <h1 style={{color: items.length > 0 && "red" }}>Mi nombre es pepito</h1>
+      <h1 style={{ color: items.length > 0 && "red" }}>Mi nombre es pepito</h1>
     </div>
   );
 };
