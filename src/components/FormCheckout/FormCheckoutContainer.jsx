@@ -10,8 +10,7 @@ export const FormCheckoutContainer = () => {
     initialValues: {
       nombre: "",
       email: "",
-      password: "",
-      confirmPassword: "",
+      phone: null,
     },
     onSubmit: (data) => {
       console.log(data);
@@ -24,20 +23,11 @@ export const FormCheckoutContainer = () => {
       email: Yup.string()
         .email("El campo debe ser un email")
         .required("este campo es obligatorio"),
-      password: Yup.string()
-        .required("este campo es obligatorio")
-        .matches(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,15}$/, {
-          message:
-            "la contraseña debe tener 1 mayuscula 1 minuscula 1 caracter especial y un numero",
-        }),
-      confirmPassword: Yup.string()
-        .required("este campo es obligatorio")
-        .oneOf([Yup.ref("password")], "las contraseñas no coinciden"),
+      phone: Yup.number().required("este campo es obligatorio"),
     }),
     validateOnChange: false,
   });
 
-  // /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,15}$/
   return (
     <div>
       <FormCheckout
