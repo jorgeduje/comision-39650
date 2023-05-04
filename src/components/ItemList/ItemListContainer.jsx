@@ -5,7 +5,9 @@ import { useParams } from "react-router-dom";
 import { PropagateLoader } from "react-spinners";
 import {db} from "../../firebaseConfig"
 
-import { getDocs, collection, query, where } from "firebase/firestore";
+
+import { getDocs, collection, query, where, addDoc } from "firebase/firestore";
+import { products } from "../../productsMock";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -40,6 +42,16 @@ const ItemListContainer = () => {
 
   }, [categoryName]);
 
+  const addProducts = ()=>{
+
+    const productsCollection = collection(db, "products")
+
+      products.map( product => (
+        addDoc(productsCollection, product)
+      ))
+
+  }
+
   return (
     <div>
       {items.length === 0 ? (
@@ -51,6 +63,8 @@ const ItemListContainer = () => {
       )}
 
       <h1 style={{ color: items.length > 0 && "red" }}>Mi nombre es pepito</h1>
+
+      <button onClick={addProducts}>Agregar productos a firebase</button>
     </div>
   );
 };
