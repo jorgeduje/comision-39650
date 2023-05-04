@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 
 export const Navbar = () => {
   const [categories, setCategories] = useState([]);
-  console.log(categories);
 
   useEffect(() => {
     const categoriesCollection = collection(db, "categories");
