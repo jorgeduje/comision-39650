@@ -10,6 +10,7 @@ const CartContainer = () => {
   let total = getTotalPrice()
    const navigate = useNavigate()
 
+
   const clearCartWithAlert = ()=>{
     Swal.fire({
       title: 'Seguro que quieres eliminar todo el carrito?',

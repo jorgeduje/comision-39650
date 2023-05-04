@@ -24,9 +24,12 @@ export const ItemDetail = ({ product, onAdd, cantidadTotal }) => {
           </h2>
         </div>
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      {
+        product.stock > 0 ? <div style={{ display: "flex", justifyContent: "center" }}>
         <CounterContainer stock={product.stock} onAdd={onAdd} initial={cantidadTotal} />
-      </div>
+      </div> : <h2>No hay stock</h2>
+      }
+     
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Link to="/">
           <Button variant="contained">Regresar</Button>

@@ -33,29 +33,17 @@ const FormCheckout = ({ handleSubmit, handleChange, errors, values }) => {
           <Grid item xs={11} sm={7}>
             <TextField
               id="outlined-basic"
-              label="Password"
+              label="Phone"
               variant="outlined"
-              name="password"
               fullWidth
+              name="phone"
               onChange={handleChange}
-              error={errors.password ? true : false}
-              helperText={errors.password}
+              error={errors.phone ? true : false}
+              helperText={errors.phone}
             />
           </Grid>
-          {values.password.length > 0 && (
-            <Grid item xs={11} sm={7}>
-              <TextField
-                id="outlined-basic"
-                label="Confirmar"
-                variant="outlined"
-                name="confirmPassword"
-                fullWidth
-                onChange={handleChange}
-                error={errors.confirmPassword ? true : false}
-                helperText={errors.confirmPassword}
-              />
-            </Grid>
-          )}
+         
+        
           <Grid item xs={6}>
             <Button type="submit" variant="contained" sx={{ marginTop: 2 }}>
               Comprar
