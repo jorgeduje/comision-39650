@@ -16,3 +16,5 @@ const saludar = ()=>{
 
 ```
 [ir a goggle](https://www.google.com.ar/)
+
+!["esta es la imagen de react"](/public/logo192.png)
