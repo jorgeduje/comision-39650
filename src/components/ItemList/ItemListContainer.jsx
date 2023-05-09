@@ -43,6 +43,7 @@ const ItemListContainer = () => {
 
   return (
     <div>
+      <h1>Este es el proyecto</h1>
       {items.length === 0 ? (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <PropagateLoader color="steelblue" size={40} />
