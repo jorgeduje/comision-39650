@@ -3,42 +3,20 @@ import ItemList from "./ItemList";
 
 import { useParams } from "react-router-dom";
 import { PropagateLoader } from "react-spinners";
-import { db } from "../../firebaseConfig";
 
-import { getDocs, collection, query, where } from "firebase/firestore";
+import { getAll } from "../../services";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
 
   const { categoryName } = useParams();
-
+  console.log("hola");
   useEffect(() => {
-    let consulta;
-    const itemCollection = collection(db, "products");
-
-    if (categoryName) {
-      const itemsCollectionFiltered = query(
-        itemCollection,
-        where("category", "==", categoryName)
-      );
-      consulta = itemsCollectionFiltered;
-    } else {
-      consulta = itemCollection;
-    }
-
-    getDocs(consulta)
-      .then((res) => {
-        const products = res.docs.map((product) => {
-          // console.log(product.data(), product.id)
-          return {
-            ...product.data(),
-            id: product.id,
-          };
-        });
-
-        setItems(products);
-      })
-      .catch((err) => console.log(err));
+    const getData = async () => {
+      let data = await getAll(categoryName);
+      setItems(data);
+    };
+    getData();
   }, [categoryName]);
 
   return (

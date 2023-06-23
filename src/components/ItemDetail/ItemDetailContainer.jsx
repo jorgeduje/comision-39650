@@ -6,6 +6,7 @@ import { CartContext } from "../../context/CartContext";
 import Swal from "sweetalert2";
 import { db } from "../../firebaseConfig";
 import { getDoc, collection, doc } from "firebase/firestore";
+import { getById } from "../../services";
 
 export const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
@@ -13,18 +14,17 @@ export const ItemDetailContainer = () => {
   const { agregarAlCarrito, getQuantityById } = useContext(CartContext);
 
   const { id } = useParams();
+  console.log("chau");
 
   useEffect(() => {
-    const itemCollection = collection(db, "products");
-    const refDoc = doc(itemCollection, id);
-    getDoc(refDoc)
-      .then((res) =>
-        setProduct({
-          ...res.data(),
-          id: res.id,
-        })
-      )
-      .catch((err) => console.log(err));
+    const getData = async () => {
+      const data = await getById(id);
+      setProduct({
+        ...data.data(),
+        id: data.id,
+      });
+    };
+    getData();
   }, [id]);
 
   const onAdd = (cantidad) => {
